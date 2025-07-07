@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Welcome to User Management, {{ user.username }}</h2>
+        <p>Total registered users: <strong>{{ count }}</strong></p>
+        <a href="/form">update your details!</a>
+        <a href="/profile">your Profile</a> |
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>

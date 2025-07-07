@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile Setup</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Complete Your Profile</h2>
+        <form method="post" enctype="multipart/form-data">
+            <label>Username:</label>
+            <input type="text" name="username" required>
+
+            <label>Department:</label>
+            <input type="text" name="department" required>
+
+            <label>College:</label>
+            <input type="text" name="college" required>
+
+            <label>Profile Photo:</label>
+            <input type="file" name="profile_photo" accept="image/*" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!-- templates/settings.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Settings</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Admin Panel</h2>
+        <p>Total Registered Users: {{ users | length }}</p>
+        <table border="1" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>College</th>
+                    <th>Can Edit</th>
+                    <th>Grant Permission</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.department }}</td>
+                        <td>{{ user.college }}</td>
+                        <td>{{ "Yes" if user.can_edit else "No" }}</td>
+                        <td>
+                            <form method="post" action="/admin/permission">
+                                <input type="hidden" name="user_id" value="{{ user.id }}">
+                                <select name="can_edit">
+                                    <option value="true" {% if user.can_edit %}selected{% endif %}>Yes</option>
+                                    <option value="false" {% if not user.can_edit %}selected{% endif %}>No</option>
+                                </select>
+                                <button type="submit">Update</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>

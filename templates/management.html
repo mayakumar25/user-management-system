@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Management Page</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .blurred {
+            filter: blur(2px);
+            pointer-events: none;
+            opacity: 0.5;
+        }
+        .form-container {
+            padding: 20px;
+        }
+        .edit-button {
+            padding: 5px 10px;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Management</h2>
+        <p>Total Users: {{ total_users }}</p>
+        <table border="1" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>College</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for u in users %}
+                    <tr>
+                        <td>{{ u.username }}</td>
+                        <td>{{ u.department }}</td>
+                        <td>{{ u.college }}</td>
+                        <td>
+                            {% if u.can_edit %}
+                                <a href="/edit" class="edit-button">Edit</a>
+                            {% else %}
+                                <span class="edit-button blurred">Edit</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

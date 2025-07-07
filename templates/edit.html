@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Edit Profile</h2>
+        <form method="post" action="/edit" enctype="multipart/form-data">
+            <label>Username:</label>
+            <input type="text" name="username" value="{{ user.username }}" required>
+
+            <label>Department:</label>
+            <input type="text" name="department" value="{{ user.department }}" required>
+
+            <label>College:</label>
+            <input type="text" name="college" value="{{ user.college }}" required>
+
+            <label>Profile Photo:</label>
+            <input type="file" name="profile_photo" accept="image/*" required>
+
+            <button type="submit">Update</button>
+        </form>
+        <br>
+        <a href="/profile">Cancel</a>
+    </div>
+</body>
+</html>
